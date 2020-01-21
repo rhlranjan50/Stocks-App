@@ -1,0 +1,51 @@
+<!Doctype html>
+<html class="no-js">
+    <head>
+        <title>Stocks App</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="assets/css/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    </head>
+    <body class="blue-grey darken-2">
+        
+        <div class="row">
+            <!-- ko foreach: stockData -->
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title stock-name-heading amber-text darken-4 stock-name-heading" data-bind="text: $data.name">Card Title</span>
+                        <small class="stock-name-description" data-bind="text: $data.lastUpdated">lorem ipsum text</small>
+                        <div class="center-align stock-price">
+                            <h3 data-bind="css: { 'green-text lighten-4': $data.difference() > 0, 'red-text lighten-4': $data.difference() < 0}">
+                                <i class="small" data-bind="visible: $data.difference() == '~'">&#126;</i>
+                                <i class="small" data-bind="visible: $data.difference() > 0">&#x25B2;</i>
+                                <i class="small" data-bind="visible: $data.difference() < 0">&#x25BC;</i>
+                                <span data-bind="text:  $data.price"></span>
+                            </h3>
+                            <h6 class="stock-price-change" data-bind="text: $data.difference"></h6>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div class="graph-row">
+                            <svg data-bind="attr: {'class': 'svg'+$data.name()}" width="100" height="20" stroke-width="2"></svg>
+                            <span class="tooltip" hidden="true"></span>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="assets/js/sparkline.min.js"></script>
+        <script src="assets/js/knockout.min.js"></script>
+        <script src="assets/js/StockDataServer.js"></script>
+        <script src="assets/js/SparklineModel.js"></script>
+        <script src="assets/js/StockModel.js"></script>
+        <script src="assets/js/appmodel.js"></script>
+        
+    </body>
+
+</html>
