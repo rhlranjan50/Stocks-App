@@ -34,7 +34,7 @@ function StockModel(data) {
             self.lastUpdated('Updated ' + lastUpdatedDate + time + ' ago');
         } else if(lastUpdatedDate >= 60) {
             time = parseInt(lastUpdatedDate / 60) === 1 ? ' minute' : ' minutes';
-            self.lastUpdated('Updated ' + lastUpdatedDate + time + ' ago');
+            self.lastUpdated('Updated ' + parseInt(lastUpdatedDate/60) + time + ' ago');
         } else if(parseInt(lastUpdatedDate / 60) >= 60 && parseInt(lastUpdatedDate / 3600) < 24) {
             time = parseInt(lastUpdatedDate / 3600) === 1 ? ' hour' : ' hours';
             self.lastUpdated('Updated ' + parseInt(lastUpdatedDate / 3600) + time + ' ago');
