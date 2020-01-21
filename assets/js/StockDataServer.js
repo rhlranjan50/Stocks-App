@@ -42,11 +42,14 @@ function StockDataServer() {
     }
     
     self.openConnection = function() {
-        webSocket = new WebSocket(url);
-        
-        webSocket.onopen = onopen;
-        webSocket.onmessage = onmessage;
-        webSocket.onerror = onerror;
-        webSocket.onclose = onclose;
+        try {
+            webSocket = new WebSocket(url);
+            webSocket.onopen = onopen;
+            webSocket.onmessage = onmessage;
+            webSocket.onerror = onerror;
+            webSocket.onclose = onclose;
+        } catch(error) {
+            onerror(error);
+        }
     }
 }
